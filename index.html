@@ -7,40 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-:root {
-  --bg: #0d0d0f;
-  --surface: #16161a;
-  --surface2: #1e1e24;
-  --border: rgba(255,255,255,0.08);
-  --border2: rgba(255,255,255,0.14);
-  --text: #f0eff4;
-  --text2: #9898a8;
-  --text3: #5c5c6e;
-  --accent: #7b6ef6;
-  --accent2: #a89cf7;
-  --accent-bg: rgba(123,110,246,0.12);
-  --accent-border: rgba(123,110,246,0.35);
-  --green: #4ade80;
-  --green-bg: rgba(74,222,128,0.1);
-  --amber: #fbbf24;
-  --amber-bg: rgba(251,191,36,0.1);
-  --red: #f87171;
-  --red-bg: rgba(248,113,113,0.1);
-  --radius: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-}
+:root{--bg:#0d0d0f;--surface:#16161a;--surface2:#1e1e24;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--text:#f0eff4;--text2:#9898a8;--text3:#5c5c6e;--accent:#7b6ef6;--accent2:#a89cf7;--accent-bg:rgba(123,110,246,0.12);--accent-border:rgba(123,110,246,0.35);--green:#4ade80;--green-bg:rgba(74,222,128,0.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,0.1);--red:#f87171;--red-bg:rgba(248,113,113,0.1);--radius:12px;--radius-lg:16px;}
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;}
-body{min-height:100vh;}
-
-/* ── 공통 ── */
 .mono{font-family:'Space Mono',monospace;}
-.screen{display:none;min-height:100vh;}
-.screen.active{display:flex;flex-direction:column;}
+.screen{display:none;min-height:100vh;flex-direction:column;}
+.screen.active{display:flex;}
 .container{max-width:520px;margin:0 auto;padding:0 20px;width:100%;}
-
-/* ── 상단 바 ── */
 .top-bar{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,13,15,0.92);backdrop-filter:blur(12px);z-index:100;}
 .logo{font-family:'Space Mono',monospace;font-size:13px;color:var(--accent2);letter-spacing:.08em;}
 .logo span{color:var(--text3);}
@@ -49,86 +22,64 @@ body{min-height:100vh;}
 .live-pill{display:inline-flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid rgba(74,222,128,0.25);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--green);}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.4s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.25;}}
-
-/* ── 홈 ── */
 .home-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px;text-align:center;}
 .hero-badge{display:inline-block;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:20px;padding:5px 14px;font-size:11px;color:var(--accent2);letter-spacing:.06em;margin-bottom:24px;font-family:'Space Mono',monospace;}
 .hero-title{font-size:clamp(26px,6vw,36px);font-weight:700;line-height:1.25;margin-bottom:12px;letter-spacing:-.02em;}
 .hero-title span{color:var(--accent);}
 .hero-sub{font-size:14px;color:var(--text2);line-height:1.7;max-width:360px;margin:0 auto 40px;}
-.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:400px;margin:0 auto;}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:400px;margin:0 auto 20px;}
 .role-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 20px;cursor:pointer;transition:all .25s;text-align:left;position:relative;overflow:hidden;}
-.role-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent-bg),transparent);opacity:0;transition:opacity .25s;}
 .role-card:hover{border-color:var(--accent-border);transform:translateY(-2px);}
-.role-card:hover::before{opacity:1;}
-.role-card-icon{font-size:22px;margin-bottom:12px;}
-.role-card-title{font-size:15px;font-weight:700;margin-bottom:4px;}
-.role-card-desc{font-size:12px;color:var(--text2);line-height:1.5;}
-.home-info{margin-top:24px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:12px 16px;font-size:12px;color:var(--accent2);line-height:1.6;max-width:400px;text-align:left;}
-
-/* ── 참가자 폼 ── */
+.role-icon{font-size:22px;margin-bottom:12px;}
+.role-title{font-size:15px;font-weight:700;margin-bottom:4px;}
+.role-desc{font-size:12px;color:var(--text2);line-height:1.5;}
+.info-box{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:12px 16px;font-size:12px;color:var(--accent2);line-height:1.6;max-width:400px;text-align:left;}
+.warn-box{background:var(--amber-bg);border:1px solid rgba(251,191,36,.25);border-radius:var(--radius);padding:12px 16px;font-size:12px;color:var(--amber);line-height:1.6;margin-bottom:14px;}
+.success-box{background:var(--green-bg);border:1px solid rgba(74,222,128,.25);border-radius:var(--radius);padding:12px 16px;font-size:12px;color:var(--green);margin-bottom:16px;}
 .page-content{flex:1;padding:32px 20px 48px;}
-.page-title{font-size:20px;font-weight:700;margin-bottom:6px;letter-spacing:-.02em;}
+.page-title{font-size:20px;font-weight:700;margin-bottom:6px;}
 .page-sub{font-size:13px;color:var(--text2);margin-bottom:28px;line-height:1.6;}
 .form-group{margin-bottom:16px;}
 .form-label{font-size:12px;color:var(--text2);margin-bottom:6px;display:block;font-family:'Space Mono',monospace;letter-spacing:.04em;}
-.form-input{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:12px 16px;font-size:15px;color:var(--text);font-family:'Noto Sans KR',sans-serif;outline:none;transition:border-color .2s;}
+.form-input{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:12px 16px;font-size:15px;color:var(--text);font-family:'Noto Sans KR',sans-serif;outline:none;transition:border-color .2s;margin-bottom:0;}
 .form-input:focus{border-color:var(--accent);}
 .form-input::placeholder{color:var(--text3);}
-
-/* ── 버튼 ── */
 .btn{width:100%;padding:14px;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif;border:none;margin-bottom:10px;}
 .btn-primary{background:var(--accent);color:#fff;}
-.btn-primary:hover{background:#6b5ee6;transform:translateY(-1px);}
+.btn-primary:hover{background:#6b5ee6;}
 .btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2);}
 .btn-ghost:hover{border-color:var(--border);color:var(--text);}
 .btn-sm{width:auto;padding:7px 16px;font-size:13px;border-radius:8px;margin:0;}
-
-/* ── 진행 바 ── */
 .progress-wrap{margin-bottom:28px;}
 .progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:8px;font-family:'Space Mono',monospace;}
 .progress-track{height:3px;background:var(--surface2);border-radius:3px;}
 .progress-fill{height:3px;background:var(--accent);border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1);}
-
-/* ── 질문 카드 ── */
 .q-type-badge{display:inline-block;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:6px;padding:3px 10px;font-size:10px;color:var(--accent2);font-family:'Space Mono',monospace;letter-spacing:.06em;margin-bottom:12px;}
-.q-text{font-size:17px;font-weight:700;line-height:1.5;margin-bottom:24px;letter-spacing:-.01em;}
+.q-text{font-size:17px;font-weight:700;line-height:1.5;margin-bottom:24px;}
 .choice-grid{display:flex;flex-direction:column;gap:10px;}
 .choice-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;font-size:14px;color:var(--text);cursor:pointer;text-align:left;transition:all .2s;font-family:'Noto Sans KR',sans-serif;line-height:1.5;}
 .choice-btn:hover{border-color:var(--accent-border);background:var(--accent-bg);color:var(--accent2);}
-.choice-btn:active{transform:scale(.99);}
-
-/* ── 결과 ── */
 .result-wrap{text-align:center;padding:32px 20px 48px;}
 .result-mbti{display:inline-flex;align-items:center;justify-content:center;width:120px;height:120px;border-radius:50%;border:2px solid var(--accent);font-family:'Space Mono',monospace;font-size:26px;font-weight:700;color:var(--accent2);background:var(--accent-bg);margin-bottom:20px;animation:popIn .5s cubic-bezier(.175,.885,.32,1.275);}
 @keyframes popIn{from{transform:scale(.5);opacity:0;}to{transform:scale(1);opacity:1;}}
-.result-name-label{font-size:18px;font-weight:700;margin-bottom:6px;}
-.result-type-name{font-size:14px;color:var(--text2);margin-bottom:28px;}
 .axes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px;}
 .axis-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center;}
 .axis-pair{font-size:10px;color:var(--text3);font-family:'Space Mono',monospace;margin-bottom:4px;}
 .axis-winner{font-size:16px;font-weight:700;color:var(--accent2);font-family:'Space Mono',monospace;}
 .axis-score{font-size:10px;color:var(--text3);}
-.result-saved{background:var(--green-bg);border:1px solid rgba(74,222,128,.25);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:var(--green);margin-bottom:20px;}
-
-/* ── 관리자 ── */
 .admin-wrap{flex:1;padding:24px 20px 48px;}
 .tabs{display:flex;gap:6px;margin-bottom:24px;overflow-x:auto;padding-bottom:2px;}
 .tab{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--text2);font-size:13px;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
 .tab.active{background:var(--accent-bg);border-color:var(--accent-border);color:var(--accent2);}
 .tab-panel{display:none;}.tab-panel.active{display:block;}
-
-/* 통계 */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
 .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 10px;text-align:center;}
 .stat-num{font-size:22px;font-weight:700;font-family:'Space Mono',monospace;color:var(--accent2);}
 .stat-label{font-size:10px;color:var(--text3);margin-top:2px;}
 .progress-bar-big{height:6px;background:var(--surface2);border-radius:6px;margin-bottom:20px;overflow:hidden;}
 .progress-bar-big-fill{height:6px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:6px;transition:width .6s;}
-
-/* 참가자 목록 */
 .section-title{font-size:11px;color:var(--text3);font-family:'Space Mono',monospace;letter-spacing:.06em;margin-bottom:10px;}
-.p-list{display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto;}
+.p-list{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;}
 .p-item{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;}
 .p-num{font-size:11px;color:var(--text3);font-family:'Space Mono',monospace;width:20px;}
 .p-name{font-size:14px;font-weight:500;flex:1;}
@@ -136,134 +87,104 @@ body{min-height:100vh;}
 .p-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;font-weight:700;background:var(--accent-bg);color:var(--accent2);border:1px solid var(--accent-border);}
 .p-time{font-size:10px;color:var(--text3);}
 .empty{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px;}
-
-/* 분포 */
+.divider{border:none;border-top:1px solid var(--border);margin:20px 0;}
 .dist-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:20px;}
 .dist-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 6px;text-align:center;}
 .dist-type{font-size:12px;font-family:'Space Mono',monospace;font-weight:700;color:var(--accent2);margin-bottom:4px;}
 .dist-count{font-size:18px;font-weight:700;color:var(--text);}
 .func-row{margin-bottom:14px;}
 .func-label{font-size:12px;color:var(--text2);margin-bottom:6px;display:flex;justify-content:space-between;}
-.func-bar-wrap{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;}
-.func-bar-a{background:var(--accent);border-radius:4px 0 0 4px;transition:width .5s;}
-.func-bar-b{background:var(--surface2);}
-
-/* 조 편성 */
 .groups-grid{display:flex;flex-direction:column;gap:12px;}
 .group-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
 .group-head{background:var(--surface2);padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
 .group-num-badge{width:28px;height:28px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent2);font-family:'Space Mono',monospace;}
 .group-head-title{font-size:14px;font-weight:700;}
-.group-head-count{font-size:11px;color:var(--text3);}
 .group-members{padding:8px 12px;}
 .gm-item{display:flex;align-items:center;gap:8px;padding:7px 4px;border-bottom:1px solid var(--border);}
 .gm-item:last-child{border-bottom:none;}
 .gm-mbti{font-size:11px;padding:2px 8px;border-radius:6px;font-family:'Space Mono',monospace;font-weight:700;background:var(--accent-bg);color:var(--accent2);}
 .gm-name{font-size:13px;font-weight:500;flex:1;}
 .gm-team{font-size:11px;color:var(--text3);}
-.success-banner{background:var(--green-bg);border:1px solid rgba(74,222,128,.25);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:var(--green);margin-bottom:16px;}
-
-/* QR 탭 */
-.qr-section{margin-bottom:24px;}
+.qr-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;text-align:center;margin-bottom:16px;}
 .url-input{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:var(--text);font-family:'Space Mono',monospace;outline:none;transition:border-color .2s;margin-bottom:8px;}
 .url-input:focus{border-color:var(--accent);}
 .url-input::placeholder{color:var(--text3);font-family:'Noto Sans KR',sans-serif;}
-.size-row{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.size-row{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
 .size-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--text2);font-size:12px;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif;}
 .size-btn.active{background:var(--accent-bg);border-color:var(--accent-border);color:var(--accent2);}
-.qr-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;text-align:center;margin-bottom:16px;}
-.qr-card-title{font-size:14px;font-weight:700;margin-bottom:6px;}
-.qr-card-sub{font-size:12px;color:var(--text2);margin-bottom:20px;line-height:1.6;}
 .qr-box-wrap{display:inline-block;background:#fff;padding:16px;border-radius:12px;margin-bottom:16px;}
 .qr-url-display{font-size:11px;color:var(--text3);font-family:'Space Mono',monospace;word-break:break-all;margin-bottom:16px;padding:8px 12px;background:var(--surface2);border-radius:8px;}
 .btn-row{display:flex;gap:8px;}
 .btn-row .btn{margin:0;flex:1;}
+.script-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:12px;font-family:'Space Mono',monospace;color:var(--text2);word-break:break-all;margin-bottom:10px;line-height:1.7;}
 .howto-list{display:flex;flex-direction:column;gap:8px;}
 .howto-item{display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);}
 .howto-num{width:24px;height:24px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--accent2);flex-shrink:0;font-family:'Space Mono',monospace;}
 .howto-text{font-size:13px;color:var(--text2);line-height:1.6;}
 .howto-text strong{color:var(--text);}
-.divider{border:none;border-top:1px solid var(--border);margin:20px 0;}
-.warn-box{background:var(--amber-bg);border:1px solid rgba(251,191,36,.25);border-radius:var(--radius);padding:12px 16px;font-size:12px;color:var(--amber);margin-bottom:14px;line-height:1.6;}
-
-/* 스크롤바 */
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--accent-border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
 </style>
 </head>
 <body>
 
-<!-- ══════════════ 홈 ══════════════ -->
+<!-- 홈 -->
 <div id="screen-home" class="screen active">
   <div class="top-bar">
     <div class="logo mono">MBTI<span>/</span>SYSTEM</div>
     <div class="live-pill"><span class="live-dot"></span>LIVE</div>
   </div>
   <div class="home-hero">
-    <div class="hero-badge">HR GROUPING SYSTEM v1.0</div>
+    <div class="hero-badge">HR GROUPING SYSTEM v2.0</div>
     <h1 class="hero-title">MBTI 측정 &<br><span>자동 조 편성</span></h1>
-    <p class="hero-sub">48명이 동시 접속해 검사를 완료하면<br>6인 8개 조가 자동으로 편성됩니다.</p>
+    <p class="hero-sub">48명이 동시 접속해 검사를 완료하면<br>Google 스프레드시트에 실시간 집계됩니다.</p>
     <div class="role-grid">
       <div class="role-card" onclick="goParticipant()">
-        <div class="role-card-icon">👤</div>
-        <div class="role-card-title">참가자 입장</div>
-        <div class="role-card-desc">MBTI 검사 진행 및 결과 확인</div>
+        <div class="role-icon">👤</div>
+        <div class="role-title">참가자 입장</div>
+        <div class="role-desc">MBTI 검사 진행 및 결과 확인</div>
       </div>
       <div class="role-card" onclick="goAdmin()">
-        <div class="role-card-icon">🛡</div>
-        <div class="role-card-title">HR 관리자</div>
-        <div class="role-card-desc">QR 생성 · 현황 · 조 편성</div>
+        <div class="role-icon">🛡</div>
+        <div class="role-title">HR 관리자</div>
+        <div class="role-desc">QR 생성 · 실시간 현황 · 조 편성</div>
       </div>
     </div>
-    <div class="home-info">💡 HR 담당자가 QR코드를 생성하면 참가자들이 스마트폰으로 스캔해 바로 입장할 수 있습니다.</div>
+    <div class="info-box">💡 Google 스프레드시트와 연동되어 참가자가 검사를 완료하는 즉시 HR 화면에 집계됩니다.</div>
   </div>
 </div>
 
-<!-- ══════════════ 참가자 ══════════════ -->
+<!-- 참가자 -->
 <div id="screen-participant" class="screen">
   <div class="top-bar">
     <div class="logo mono">MBTI<span>/</span>TEST</div>
     <button class="back-btn" onclick="showScreen('screen-home')">← 홈</button>
   </div>
-
   <div id="step-name" class="page-content">
     <div class="container">
       <div class="page-title">참가자 정보 입력</div>
       <div class="page-sub">이름과 소속 팀을 입력하고 검사를 시작하세요.<br>약 3~5분 소요됩니다.</div>
-      <div class="form-group">
-        <label class="form-label">NAME</label>
-        <input class="form-input" id="p-name" type="text" placeholder="홍길동" maxlength="10">
-      </div>
-      <div class="form-group">
-        <label class="form-label">TEAM</label>
-        <input class="form-input" id="p-team" type="text" placeholder="마케팅팀" maxlength="15">
-      </div>
+      <div class="form-group"><label class="form-label">NAME</label><input class="form-input" id="p-name" type="text" placeholder="홍길동" maxlength="10"></div>
+      <div class="form-group" style="margin-bottom:24px;"><label class="form-label">TEAM</label><input class="form-input" id="p-team" type="text" placeholder="마케팅팀" maxlength="15"></div>
       <button class="btn btn-primary" onclick="startTest()">검사 시작하기 →</button>
     </div>
   </div>
-
   <div id="step-test" style="display:none;" class="page-content">
     <div class="container">
       <div class="progress-wrap">
-        <div class="progress-meta">
-          <span id="q-label">질문 1 / 20</span>
-          <span id="q-pct">5%</span>
-        </div>
+        <div class="progress-meta"><span id="q-label">질문 1 / 20</span><span id="q-pct">5%</span></div>
         <div class="progress-track"><div class="progress-fill" id="pfill" style="width:5%"></div></div>
       </div>
       <div id="q-body"></div>
     </div>
   </div>
-
   <div id="step-result" style="display:none;">
-    <div class="container">
-      <div class="result-wrap" id="result-content"></div>
-    </div>
+    <div class="container"><div class="result-wrap" id="result-content"></div></div>
   </div>
 </div>
 
-<!-- ══════════════ 관리자 ══════════════ -->
+<!-- 관리자 -->
 <div id="screen-admin" class="screen">
   <div class="top-bar">
     <div class="logo mono">MBTI<span>/</span>ADMIN</div>
@@ -272,49 +193,52 @@ body{min-height:100vh;}
       <button class="back-btn" onclick="showScreen('screen-home')">← 홈</button>
     </div>
   </div>
-
   <div class="admin-wrap">
     <div class="container">
       <div class="tabs">
-        <button class="tab active" onclick="switchTab('t-qr',this)">📱 QR 생성</button>
+        <button class="tab active" onclick="switchTab('t-setup',this)">⚙️ 초기 설정</button>
+        <button class="tab" onclick="switchTab('t-qr',this)">📱 QR 생성</button>
         <button class="tab" onclick="switchTab('t-status',this)">👥 참가자 현황</button>
-        <button class="tab" onclick="switchTab('t-dist',this)">📊 MBTI 분포</button>
+        <button class="tab" onclick="switchTab('t-dist',this)">📊 분포</button>
         <button class="tab" onclick="switchTab('t-groups',this)">🏷 조 편성</button>
       </div>
 
-      <!-- QR 탭 -->
-      <div class="tab-panel active" id="t-qr">
-        <div class="qr-section">
-          <div class="section-title">STEP 1 — 이 사이트의 URL 입력</div>
-          <div class="warn-box">⚡ 브라우저 주소창의 URL을 복사해서 아래에 붙여넣으세요. 파일로 저장한 경우 웹 호스팅 후 URL을 사용하세요.</div>
-          <input class="url-input" id="qr-url-input" placeholder="https://yoursite.com/mbti" oninput="generateQR()">
-          <div class="size-row">
-            <span style="font-size:12px;color:var(--text2);align-self:center;">크기:</span>
-            <button class="size-btn active" onclick="setQRSize(160,this)">소형 (인쇄)</button>
-            <button class="size-btn" onclick="setQRSize(220,this)">중형 (화면)</button>
-            <button class="size-btn" onclick="setQRSize(280,this)">대형 (빔)</button>
-          </div>
+      <!-- 설정 탭 -->
+      <div class="tab-panel active" id="t-setup">
+        <div class="warn-box">⚡ 처음 1회만 설정하면 됩니다. Apps Script 배포 URL을 아래에 입력해주세요.</div>
+        <div class="section-title" style="margin-bottom:8px;">APPS SCRIPT 배포 URL</div>
+        <input class="url-input" id="script-url-input" placeholder="https://script.google.com/macros/s/.../exec" style="margin-bottom:12px;">
+        <button class="btn btn-primary" onclick="saveScriptURL()">저장하고 연결 테스트</button>
+        <div id="conn-status"></div>
+        <div class="divider"></div>
+        <div class="section-title">설정 방법</div>
+        <div class="howto-list">
+          <div class="howto-item"><div class="howto-num">1</div><div class="howto-text"><strong>Google 스프레드시트</strong> 새로 만들기 → 상단 메뉴 <strong>확장 프로그램 → Apps Script</strong></div></div>
+          <div class="howto-item"><div class="howto-num">2</div><div class="howto-text">기존 코드 전체 삭제 후 <strong>apps_script.gs</strong> 파일 내용 붙여넣기 → 저장(💾)</div></div>
+          <div class="howto-item"><div class="howto-num">3</div><div class="howto-text">상단 <strong>배포 → 새 배포</strong> → 유형: <strong>웹 앱</strong> → 액세스: <strong>모든 사용자</strong> → 배포</div></div>
+          <div class="howto-item"><div class="howto-num">4</div><div class="howto-text">생성된 <strong>웹 앱 URL</strong>을 복사해서 위 입력창에 붙여넣기</div></div>
         </div>
+      </div>
 
+      <!-- QR 탭 -->
+      <div class="tab-panel" id="t-qr">
+        <div class="section-title" style="margin-bottom:8px;">이 사이트 URL 입력</div>
+        <input class="url-input" id="qr-url-input" placeholder="https://사용자명.github.io/mbti-system" oninput="generateQR()">
+        <div class="size-row">
+          <span style="font-size:12px;color:var(--text2);">크기:</span>
+          <button class="size-btn active" onclick="setQRSize(160,this)">소형</button>
+          <button class="size-btn" onclick="setQRSize(220,this)">중형</button>
+          <button class="size-btn" onclick="setQRSize(280,this)">대형</button>
+        </div>
         <div class="qr-card">
-          <div class="qr-card-title">참가자 입장 QR코드</div>
-          <div class="qr-card-sub">스마트폰으로 스캔하면 바로 검사가 시작됩니다</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px;">참가자 입장 QR코드</div>
+          <div style="font-size:12px;color:var(--text2);margin-bottom:20px;">스마트폰으로 스캔하면 검사가 시작됩니다</div>
           <div class="qr-box-wrap"><div id="qr-output" style="min-width:160px;min-height:160px;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;">URL을 입력해주세요</div></div>
           <div id="qr-url-show" class="qr-url-display" style="display:none;"></div>
           <div id="qr-btns" style="display:none;" class="btn-row">
             <button class="btn btn-primary btn-sm" onclick="printQR()">🖨 인쇄</button>
-            <button class="btn btn-ghost btn-sm" onclick="copyURL()">📋 URL 복사</button>
+            <button class="btn btn-ghost btn-sm" onclick="copyURL()">📋 복사</button>
           </div>
-        </div>
-
-        <div class="divider"></div>
-        <div class="section-title">사용 방법</div>
-        <div class="howto-list">
-          <div class="howto-item"><div class="howto-num">1</div><div class="howto-text">이 HTML 파일을 <strong>웹 호스팅</strong>에 업로드하거나 사내 서버에 올립니다<br><span style="font-size:11px;color:var(--text3);">GitHub Pages, Netlify, 사내 인트라넷 등 무료 옵션 다수</span></div></div>
-          <div class="howto-item"><div class="howto-num">2</div><div class="howto-text">브라우저 주소창의 <strong>URL을 복사</strong>해 위 입력창에 붙여넣으면 QR코드가 자동 생성됩니다</div></div>
-          <div class="howto-item"><div class="howto-num">3</div><div class="howto-text">QR코드를 <strong>인쇄하거나 빔프로젝터</strong>로 띄워 참가자들에게 보여주세요</div></div>
-          <div class="howto-item"><div class="howto-num">4</div><div class="howto-text">48명이 스마트폰으로 스캔 → 이름 입력 → 검사 완료 후 <strong>참가자 현황 탭</strong>에서 실시간 확인</div></div>
-          <div class="howto-item"><div class="howto-num">5</div><div class="howto-text"><strong>조 편성 탭</strong>에서 버튼 한 번으로 6인 8개 조가 자동 완성됩니다</div></div>
         </div>
       </div>
 
@@ -324,12 +248,11 @@ body{min-height:100vh;}
         <div class="progress-bar-big"><div class="progress-bar-big-fill" id="big-progress" style="width:0%"></div></div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
           <div class="section-title" style="margin:0;">완료된 참가자</div>
-          <button class="btn btn-ghost btn-sm" onclick="loadData().then(()=>{renderStatus();})">↻ 새로고침</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadFromSheet()">↻ 새로고침</button>
         </div>
         <div class="p-list" id="p-list"></div>
         <div class="divider"></div>
-        <button class="btn btn-ghost" onclick="addDemo()">🧪 데모 48명 추가 (테스트)</button>
-        <button class="btn btn-ghost" onclick="clearAll()" style="margin-top:0;">🗑 데이터 초기화</button>
+        <button class="btn btn-ghost" onclick="clearSheet()">🗑 전체 초기화</button>
       </div>
 
       <!-- 분포 탭 -->
@@ -341,7 +264,7 @@ body{min-height:100vh;}
         <div id="func-bars"></div>
       </div>
 
-      <!-- 조 편성 탭 -->
+      <!-- 조편성 탭 -->
       <div class="tab-panel" id="t-groups">
         <button class="btn btn-primary" onclick="makeGroups()" style="margin-bottom:16px;">✨ 6인 8개 조 자동 편성</button>
         <div id="groups-wrap"><div class="empty">조 편성 버튼을 눌러주세요</div></div>
@@ -380,14 +303,14 @@ const QS=[
 ];
 
 let participants=[],groups=[],cQ=0,ans={},cName='',cTeam='',qrSize=160,qrObj=null;
-const LS_KEY='mbti_v2_participants';
+const URL_KEY='mbti_script_url';
 
-function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(participants));}catch(e){}}
-async function loadData(){try{const d=localStorage.getItem(LS_KEY);if(d)participants=JSON.parse(d);}catch(e){participants=[];}}
+function getScriptURL(){return localStorage.getItem(URL_KEY)||'';}
 
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 
 function goParticipant(){
+  if(!getScriptURL()){alert('HR 담당자가 아직 시스템을 설정 중입니다.\n잠시 후 다시 시도해주세요.');return;}
   showScreen('screen-participant');
   document.getElementById('step-name').style.display='block';
   document.getElementById('step-test').style.display='none';
@@ -396,7 +319,34 @@ function goParticipant(){
   document.getElementById('p-team').value='';
 }
 
-function goAdmin(){loadData().then(()=>{showScreen('screen-admin');renderStatus();renderDist();});}
+function goAdmin(){showScreen('screen-admin');const u=getScriptURL();if(u)document.getElementById('script-url-input').value=u;loadFromSheet();}
+
+function saveScriptURL(){
+  const url=document.getElementById('script-url-input').value.trim();
+  if(!url){alert('URL을 입력해주세요.');return;}
+  localStorage.setItem(URL_KEY,url);
+  const st=document.getElementById('conn-status');
+  st.innerHTML='<div class="warn-box" style="margin-top:12px;"><span class="spinner"></span>연결 테스트 중...</div>';
+  callScript('load',{}).then(res=>{
+    if(res.success){
+      st.innerHTML='<div class="success-box" style="margin-top:12px;">✓ 연결 성공! 스프레드시트와 정상 연결됐습니다.</div>';
+      participants=res.participants||[];
+    }else{
+      st.innerHTML='<div class="warn-box" style="margin-top:12px;">⚠️ 연결 실패: '+res.error+'<br>Apps Script 배포 URL을 다시 확인해주세요.</div>';
+    }
+  }).catch(e=>{
+    st.innerHTML='<div class="warn-box" style="margin-top:12px;">⚠️ 오류: '+e.message+'</div>';
+  });
+}
+
+async function callScript(action,params){
+  const url=getScriptURL();
+  if(!url)throw new Error('Apps Script URL이 설정되지 않았습니다.');
+  const qs=new URLSearchParams({action,...params}).toString();
+  const res=await fetch(url+'?'+qs,{method:'GET',mode:'cors'});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  return res.json();
+}
 
 function startTest(){
   const n=document.getElementById('p-name').value.trim();
@@ -411,7 +361,7 @@ function startTest(){
 function renderQ(){
   const q=QS[cQ];
   const pct=Math.round((cQ+1)/QS.length*100);
-  document.getElementById('q-label').textContent=`질문 ${cQ+1} / ${QS.length}`;
+  document.getElementById('q-label').textContent='질문 '+(cQ+1)+' / '+QS.length;
   document.getElementById('q-pct').textContent=pct+'%';
   document.getElementById('pfill').style.width=pct+'%';
   document.getElementById('q-body').innerHTML=`
@@ -423,54 +373,55 @@ function renderQ(){
     </div>`;
 }
 
-function pick(v){
-  ans[v]++;cQ++;
-  if(cQ>=QS.length){finishTest();return;}
-  renderQ();
-}
+function pick(v){ans[v]++;cQ++;if(cQ>=QS.length){finishTest();return;}renderQ();}
 
-function finishTest(){
+async function finishTest(){
   const m=(ans.E>=ans.I?'E':'I')+(ans.S>=ans.N?'S':'N')+(ans.T>=ans.F?'T':'F')+(ans.J>=ans.P?'J':'P');
-  const entry={name:cName,team:cTeam,mbti:m,time:new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}),scores:{...ans}};
-  loadData().then(()=>{
-    const i=participants.findIndex(p=>p.name===cName);
-    if(i>=0)participants[i]=entry;else participants.push(entry);
-    save();
-  });
   document.getElementById('step-test').style.display='none';
   document.getElementById('step-result').style.display='block';
   document.getElementById('result-content').innerHTML=`
     <div class="result-mbti">${m}</div>
-    <div class="result-name-label">${cName}님의 유형</div>
-    <div class="result-type-name">${INFO[m]}</div>
+    <div style="font-size:16px;font-weight:700;margin-bottom:4px;">${cName}님의 유형</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:24px;">${INFO[m]}</div>
     <div class="axes-grid">
       ${[['E/I',ans.E>=ans.I?'E':'I',ans.E,ans.I],['S/N',ans.S>=ans.N?'S':'N',ans.S,ans.N],
          ['T/F',ans.T>=ans.F?'T':'F',ans.T,ans.F],['J/P',ans.J>=ans.P?'J':'P',ans.J,ans.P]]
         .map(([p,w,a,b])=>`<div class="axis-card"><div class="axis-pair">${p}</div><div class="axis-winner">${w}</div><div class="axis-score">${a}:${b}</div></div>`).join('')}
     </div>
-    <div class="result-saved">✓ 결과가 저장됐습니다. HR 담당자가 조 편성을 진행합니다.</div>
-    <button class="btn btn-primary" onclick="goParticipant()">다른 사람 검사하기</button>
+    <div id="save-status"><div class="warn-box"><span class="spinner"></span>결과 저장 중...</div></div>
+    <button class="btn btn-ghost" onclick="goParticipant()" style="margin-top:8px;">다른 사람 검사하기</button>
     <button class="btn btn-ghost" onclick="showScreen('screen-home')">← 홈으로</button>`;
+
+  try{
+    await callScript('save',{name:cName,team:cTeam,mbti:m,time:new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}),scores:JSON.stringify(ans)});
+    document.getElementById('save-status').innerHTML='<div class="success-box">✓ 결과가 스프레드시트에 저장됐습니다!</div>';
+  }catch(e){
+    document.getElementById('save-status').innerHTML='<div class="warn-box">⚠️ 저장 실패: 네트워크를 확인해주세요.</div>';
+  }
 }
 
-// ── 관리자 ──────────────────────────────────────────────────────────────────
-function switchTab(id,btn){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');btn.classList.add('active');
-  if(id==='t-status')renderStatus();
-  if(id==='t-dist')renderDist();
+async function loadFromSheet(){
+  renderStatus([]);
+  try{
+    const res=await callScript('load',{});
+    if(res.success){participants=res.participants||[];renderStatus(participants);renderDist();}
+    else{console.error(res.error);}
+  }catch(e){
+    if(!getScriptURL()){renderStatus([]);}
+    else{console.error(e);}
+  }
 }
 
-function renderStatus(){
-  const n=participants.length,target=48;
+function renderStatus(list){
+  list=list||participants;
+  const n=list.length,target=48;
   document.getElementById('admin-stats').innerHTML=
     [['완료',n],['대기',Math.max(0,target-n)],['목표',target],['진행률',Math.min(100,Math.round(n/target*100))+'%']]
     .map(([l,v])=>`<div class="stat-box"><div class="stat-num">${v}</div><div class="stat-label">${l}</div></div>`).join('');
   document.getElementById('big-progress').style.width=Math.min(100,Math.round(n/target*100))+'%';
-  const list=document.getElementById('p-list');
-  if(!participants.length){list.innerHTML='<div class="empty">아직 완료된 참가자가 없습니다</div>';return;}
-  list.innerHTML=participants.map((p,i)=>`
+  const pl=document.getElementById('p-list');
+  if(!list.length){pl.innerHTML='<div class="empty">아직 완료된 참가자가 없습니다</div>';return;}
+  pl.innerHTML=list.map((p,i)=>`
     <div class="p-item">
       <span class="p-num">${i+1}</span>
       <span class="p-name">${p.name}</span>
@@ -494,10 +445,9 @@ function renderDist(){
     ['판단(J) vs 인식(P)',JP.J,JP.P,'J','P']
   ].map(([l,a,b,na,nb])=>`
     <div class="func-row">
-      <div class="func-label"><span>${na} ${a}명</span><span style="color:var(--text3)">${l}</span><span>${nb} ${b}명</span></div>
-      <div class="func-bar-wrap">
-        <div style="background:var(--accent);height:8px;border-radius:4px 0 0 4px;width:${Math.round(a/total*100)}%;transition:width .5s;"></div>
-        <div style="background:var(--surface2);height:8px;border-radius:0 4px 4px 0;flex:1;"></div>
+      <div class="func-label"><span>${na} ${a}명</span><span>${l}</span><span>${nb} ${b}명</span></div>
+      <div style="height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;display:flex;">
+        <div style="background:var(--accent);width:${Math.round(a/total*100)}%;transition:width .5s;border-radius:4px 0 0 4px;"></div>
       </div>
     </div>`).join('');
 }
@@ -507,91 +457,68 @@ function makeGroups(){
   const pool=[...participants].sort(()=>Math.random()-.5).slice(0,48);
   const ng=Math.floor(pool.length/6);
   groups=Array.from({length:ng},()=>[]);
-  const sorted=[...pool].sort((a,b)=>(a.mbti[0]==='E'?0:1)-(b.mbti[0]==='E'?0:1));
-  sorted.forEach((p,i)=>groups[i%ng].push(p));
+  [...pool].sort((a,b)=>(a.mbti[0]==='E'?0:1)-(b.mbti[0]==='E'?0:1)).forEach((p,i)=>groups[i%ng].push(p));
   document.getElementById('groups-wrap').innerHTML=`
-    <div class="success-banner">✓ ${ng}개 조 편성 완료! E/I 균형을 고려해 구성됐습니다.</div>
+    <div class="success-box">✓ ${ng}개 조 편성 완료! E/I 균형을 고려해 구성됐습니다.</div>
     <div class="groups-grid">${groups.map((g,i)=>`
       <div class="group-card">
-        <div class="group-head">
-          <div class="group-num-badge">${i+1}</div>
-          <div class="group-head-title">${i+1}조</div>
-          <div class="group-head-count">${g.length}명</div>
-        </div>
+        <div class="group-head"><div class="group-num-badge">${i+1}</div><div class="group-head-title">${i+1}조</div><div style="font-size:11px;color:var(--text3);margin-left:auto;">${g.length}명</div></div>
         <div class="group-members">${g.map(m=>`
-          <div class="gm-item">
-            <span class="gm-mbti">${m.mbti}</span>
-            <span class="gm-name">${m.name}</span>
-            <span class="gm-team">${m.team}</span>
-          </div>`).join('')}
+          <div class="gm-item"><span class="gm-mbti">${m.mbti}</span><span class="gm-name">${m.name}</span><span class="gm-team">${m.team}</span></div>`).join('')}
         </div>
-      </div>`).join('')}
-    </div>`;
+      </div>`).join('')}</div>`;
   document.getElementById('export-wrap').style.display='block';
 }
 
 function exportGroups(){
   const txt=groups.map((g,i)=>`[${i+1}조]\n${g.map(m=>`${m.name}(${m.mbti}) - ${m.team}`).join('\n')}`).join('\n\n');
-  navigator.clipboard.writeText(txt).then(()=>alert('조 편성 결과가 복사됐습니다!')).catch(()=>{
-    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);alert('복사됐습니다!');
-  });
+  navigator.clipboard.writeText(txt).then(()=>alert('복사됐습니다!')).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);alert('복사됐습니다!');});
 }
 
-function addDemo(){
-  const names=['김민준','이서연','박지훈','최예린','정우진','강하은','조민서','윤도현','임수아','한지훈','오예진','신동혁','류소연','권민혁','황예원','장태양','문지원','배성민','곽아름','전민재','성지현','노준혁','유하린','채민준','홍소현','안준서','남하진','송민아','백지호','심예솔','원태오','공세은','마은진','하지우','탁준영','봉아현','형준호','지서현','소민혁','단예원','막주원','석하은','남지훈','양서현','경민준','진예린','반도영','화서아'];
-  const teams=['마케팅팀','개발팀','영업팀','기획팀','인사팀','재무팀','운영팀','고객팀'];
-  participants=names.map((name,i)=>({name,team:teams[i%8],mbti:TYPES[Math.floor(Math.random()*16)],time:new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}),scores:{}}));
-  save();renderStatus();
+async function clearSheet(){
+  if(!confirm('스프레드시트의 모든 데이터를 초기화할까요?'))return;
+  try{
+    await callScript('clear',{});
+    participants=[];groups=[];
+    renderStatus([]);
+    document.getElementById('groups-wrap').innerHTML='<div class="empty">조 편성 버튼을 눌러주세요</div>';
+    document.getElementById('export-wrap').style.display='none';
+    alert('초기화 완료!');
+  }catch(e){alert('오류: '+e.message);}
 }
 
-function clearAll(){if(!confirm('모든 데이터를 초기화할까요?'))return;participants=[];groups=[];save();renderStatus();document.getElementById('groups-wrap').innerHTML='<div class="empty">조 편성 버튼을 눌러주세요</div>';document.getElementById('export-wrap').style.display='none';}
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');btn.classList.add('active');
+  if(id==='t-status')loadFromSheet();
+  if(id==='t-dist'){loadFromSheet().then(()=>renderDist());}
+}
 
-// ── QR ──────────────────────────────────────────────────────────────────────
 function setQRSize(s,btn){qrSize=s;document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');generateQR();}
-
 function generateQR(){
   const url=document.getElementById('qr-url-input').value.trim();
   const box=document.getElementById('qr-output');
   const urlShow=document.getElementById('qr-url-show');
   const btns=document.getElementById('qr-btns');
   if(!url){box.innerHTML='URL을 입력해주세요';urlShow.style.display='none';btns.style.display='none';return;}
-  box.innerHTML='';
-  if(qrObj){try{qrObj.clear();}catch(e){}}
-  try{
-    qrObj=new QRCode(box,{text:url,width:qrSize,height:qrSize,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
-    urlShow.style.display='block';urlShow.textContent=url;btns.style.display='flex';
-  }catch(e){box.innerHTML='QR 생성 오류';}
+  box.innerHTML='';if(qrObj){try{qrObj.clear();}catch(e){}}
+  try{qrObj=new QRCode(box,{text:url,width:qrSize,height:qrSize,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});urlShow.style.display='block';urlShow.textContent=url;btns.style.display='flex';}
+  catch(e){box.innerHTML='QR 생성 오류';}
 }
-
-function copyURL(){
-  const url=document.getElementById('qr-url-input').value.trim();
-  if(!url)return;
-  navigator.clipboard.writeText(url).then(()=>alert('URL이 복사됐습니다!')).catch(()=>{const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);alert('복사됐습니다!');});
-}
-
+function copyURL(){const url=document.getElementById('qr-url-input').value.trim();if(!url)return;navigator.clipboard.writeText(url).then(()=>alert('복사됐습니다!')).catch(()=>{const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);alert('복사됐습니다!');});}
 function printQR(){
-  const box=document.getElementById('qr-output');
-  const img=box.querySelector('img');const canvas=box.querySelector('canvas');
+  const box=document.getElementById('qr-output');const img=box.querySelector('img');const canvas=box.querySelector('canvas');
   let src='';if(img)src=img.src;else if(canvas)src=canvas.toDataURL();
   if(!src){alert('QR코드를 먼저 생성해주세요.');return;}
   const url=document.getElementById('qr-url-input').value.trim();
   const w=window.open('','_blank');
-  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>MBTI 입장 QR</title>
-  <style>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
-  body{font-family:'Noto Sans KR',sans-serif;background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;}
-  .card{text-align:center;padding:48px;border:2px solid #e5e7eb;border-radius:20px;max-width:360px;}
-  h1{font-size:20px;font-weight:700;margin-bottom:8px;color:#111;}
-  p{font-size:13px;color:#666;margin-bottom:24px;line-height:1.6;}
-  img{border:1px solid #f0f0f0;border-radius:8px;}
-  .url{font-size:10px;color:#999;margin-top:16px;word-break:break-all;}
-  </style></head>
-  <body><div class="card"><h1>MBTI 검사 참가자 입장</h1><p>스마트폰 카메라로 QR코드를 스캔하면<br>검사가 바로 시작됩니다</p>
-  <img src="${src}" width="${qrSize}" height="${qrSize}"><div class="url">${url}</div></div>
-  <script>window.onload=()=>window.print()<\/script></body></html>`);
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>MBTI QR</title><style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;}.card{text-align:center;padding:40px;border:2px solid #e5e7eb;border-radius:16px;}.card h1{font-size:18px;margin-bottom:8px;}.card p{font-size:12px;color:#666;margin-bottom:20px;}.url{font-size:10px;color:#999;margin-top:12px;word-break:break-all;}</style></head><body><div class="card"><h1>MBTI 검사 참가자 입장</h1><p>스마트폰으로 QR코드를 스캔하세요</p><img src="${src}" width="${qrSize}" height="${qrSize}"><div class="url">${url}</div></div><script>window.onload=()=>window.print()<\/script></body></html>`);
   w.document.close();
 }
 
-loadData();
+const savedURL=getScriptURL();
+if(savedURL)document.getElementById('script-url-input')&&(document.getElementById('script-url-input').value=savedURL);
 </script>
 </body>
 </html>
